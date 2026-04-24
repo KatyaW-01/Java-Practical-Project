@@ -43,11 +43,19 @@ public class ConsoleView implements GameView{ //add implements GameView
   }
 
   public void printBattleText(List<MOB> monsters, List<Knight> activeKnights){
+    System.out.println("Our heroes come across the following monsters. Prepare for battle!");
+    System.out.println("Knights     Foes");
     
+    for(int i = 0; i < activeKnights.size(); ++i){
+      System.out.print(activeKnights.get(i).getName() + "     ");
+      if(i < monsters.size() && monsters.get(i) != null){
+        System.out.print(monsters.get(i).getName() + "\n");
+      }
+    }
   }
 
   public void printBattleText(MOB dead){
-
+    System.out.println(dead.getName() + " was defeated!");
   }
 
   public void printDefeated(){
@@ -71,7 +79,7 @@ public class ConsoleView implements GameView{ //add implements GameView
   }
 
   public void splashScreen(){
-    
+
   }
   
 }
