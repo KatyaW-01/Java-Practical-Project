@@ -5,7 +5,7 @@ public class Fortune implements Attributes{
   private final int hpBonus;
   private final String name;
 
-  public Fortune(String name, int armor, int hitModifier, int hpBonus, DiceType dtype){
+  public Fortune(String name,int hpBonus, int armor, int hitModifier, DiceType dtype){
     this.name = name;
     this.armor = armor;
     this.hitModifier = hitModifier;
@@ -13,12 +13,8 @@ public class Fortune implements Attributes{
     this.dtype = dtype;
   }
 
-  public Fortune(String name, int armor, int hitModifier, int hpBonus){
-    this.name = name;
-    this.armor = armor;
-    this.hitModifier = hitModifier;
-    this.hpBonus = hpBonus;
-    this.dtype = null;
+  public Fortune(String name, int hpBonus, int armor, int hitModifier){
+    this(name,hpBonus,armor,hitModifier,null);
   }
 
   @Override
@@ -58,6 +54,8 @@ public class Fortune implements Attributes{
 
   public static void main(String[] args){
     Fortune ftn = new Fortune("Merlin Luck", 10, 5, 2, DiceType.D12);
+    Fortune ftn2 = new Fortune("Justice",5,2,1);
+    System.out.println("TESTING damage die in fortune: " + ftn2.getDamageDie());
     System.out.println("TESTING Armor in fortune: " + ftn.getArmor());
     System.out.println("TESTING Damage Die in fortune: " + ftn.getDamageDie());
     System.out.println("TESTING Hit Modifier in fortune: " + ftn.getHitModifier());
@@ -65,5 +63,7 @@ public class Fortune implements Attributes{
     System.out.println("TESTING Name in fortune: " + ftn.getName());
     System.out.println("TESTING to String in fortune: ");
     System.out.println(ftn.toString());
+    System.out.println("TESTING to string in fortune: ");
+    System.out.println(ftn2.toString());
   }
 }
