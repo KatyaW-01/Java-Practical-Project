@@ -34,8 +34,7 @@ public class Knight extends MOB {
   public int getArmor(){
     if(activeFortune != null){
       //if an activeFortune is in effect, armor is the armor of the knight + the armor bonus from the activeFortune
-      armor = super.getArmor() + activeFortune.getArmor();
-      return armor;
+      return super.getArmor() + activeFortune.getArmor();
     }
     return super.getArmor();
   }
@@ -60,8 +59,8 @@ public class Knight extends MOB {
   @Override
   public int getHitModifier(){
     if(activeFortune != null){
-      hitModifier = super.getHitModifier() + activeFortune.getHitModifier();
-      return hitModifier;
+      return super.getHitModifier() + activeFortune.getHitModifier();
+      
     }
     return super.getHitModifier();
   }
@@ -69,8 +68,7 @@ public class Knight extends MOB {
   @Override
   public int getMaxHP(){
     if(activeFortune != null){
-      maxHP = super.getMaxHP() + activeFortune.getMaxHP();
-      return maxHP;
+      return super.getMaxHP() + activeFortune.getMaxHP();
     }
     return super.getMaxHP();
   }
@@ -101,22 +99,29 @@ public class Knight extends MOB {
     System.out.println(knight.toString());
     System.out.println("TESTING get Active Fortune in knight (should be null): " + knight.getActiveFortune());
     System.out.println("TESTING get armor in knight (should be 12): " + knight.getArmor());
-    System.out.println("TESTING get damage die in knight (Should be 6): " + knight.getDamageDie());
+    System.out.println("TESTING get damage die in knight (Should be D6): " + knight.getDamageDie());
     System.out.println("TESTING get hit modifier in knight (Should be 1): " + knight.getHitModifier());
     System.out.println("TESTING get max HP in knight (should be 35): " + knight.getMaxHP());
     System.out.println("--SETTING ACTIVE FORTUNE--");
     knight.setActiveFortune(fortune);
     System.out.println("TESTING get Active Fortune in knight (should be 'Valor'): ");
     System.out.println(knight.getActiveFortune());
-    System.out.println("TESTING get Armor in knight (Should be 22): " + knight.getArmor());
-    System.out.println("TESTING get damage die in knight (Should be 8): " + knight.getDamageDie());
-    System.out.println("TESTING get hit modifier in knight (should be 2): " + knight.getHitModifier());
-    System.out.println("TESTING get max HP in knight (should be 38): " + knight.getMaxHP());
+    System.out.println("TESTING get Armor in knight (Should be 13): " + knight.getArmor());
+    System.out.println("TESTING get damage die in knight (Should be D8): " + knight.getDamageDie());
+    System.out.println("TESTING get hit modifier in knight (should be 4): " + knight.getHitModifier());
+    System.out.println("TESTING get max HP in knight (should be 45): " + knight.getMaxHP());
     System.out.println("TESTING get id in knight: " + knight.getId());
     System.out.println("TESTING get XP in knight: " + knight.getXP());
     System.out.println("TESTING add XP in knight: " );
     knight.addXP(4);
     System.out.println("TESTING get XP in knight (Should be 4 now): " + knight.getXP());
+    System.out.println("---SETTING DIFFERENT ACTIVE FORTUNE---");
+    Fortune fortune2 = new Fortune("Obedience",0,3,1);
+    System.out.println("TESTING ACTIVE FORTUNE damage die:" + fortune2.getDamageDie());
+    System.out.println("TESTING knight damage die (SHould be D8): " + knight.getDamageDie());
+    knight.setActiveFortune(fortune2);
+    System.out.println("ACTIVE FORTUNE HAD BEEN SET");
+    System.out.println("TESTING damage die (should be D6): " + knight.getDamageDie()); 
     System.out.println("TESTING to CSV in knight: " + knight.toCSV());
     System.out.println("TESTING to string in knight: ");
     System.out.println(knight.toString());
