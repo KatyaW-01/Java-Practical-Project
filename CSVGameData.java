@@ -88,7 +88,6 @@ public class CSVGameData extends GameData {
   @Override
   public void save(String filename){
     //saves knight data as a CSV to the given filename
-    //loop through every knight and print out the result of toCSV() for each knight
     try{
       FileOutputStream fileStream = new FileOutputStream(filename);
       PrintWriter out = new PrintWriter(fileStream);
@@ -104,6 +103,44 @@ public class CSVGameData extends GameData {
   }
 
   public static void main(String[] args){
-   
+    CSVGameData data = new CSVGameData("gamedata.csv", "knights.csv");
+    //Get all knights
+    System.out.println("TESTING get knights: ");
+    System.out.println(data.getKnights());
+    //get all active knights
+    System.out.println("TESTING get active knights: ");
+    System.out.println(data.getActiveKnights());
+    //setting and removing active knights
+    Knight knight = data.getKnight("Gwain");
+    Knight morrigan = new Knight(04,"Morrigan Ravenskind",30,15,1,DiceType.D8,0);
+    System.out.println("TESTING set active knight (returns true if successful): " + data.setActive(knight) + data.setActive(morrigan));
+    System.out.println("TESTING get active knights (Should now include Gwain + Morrigan): ");
+    System.out.println(data.getActiveKnights());
+    System.out.println("TESTING remove active knight: ");
+    data.removeActive(morrigan);
+    System.out.println(data.getActiveKnights());
+    System.out.println("TESTING get active: ");
+    System.out.println(data.getActive("14"));
+    //adding a fifth active knight
+    Knight eriu = new Knight(05,"Eriu",21,13,2,DiceType.D4,0);
+    Knight danu = new Knight(06,"Danu of Ireland",40,16,1,DiceType.D6,0);
+    System.out.println(data.setActive(eriu));
+    System.out.println(data.setActive(danu));
+    System.out.println(data.setActive(morrigan));
+    Knight fodla = new Knight(07,"Fodla",25,10,2,DiceType.D8,0);
+    System.out.println("TESTING adding a fifth active knight(should return false): " + data.setActive(fodla));
+    System.out.println(data.getActiveKnights());
+    //get random fortune
+    System.out.println("TESTING get random fortune: ");
+    System.out.println("first fortune:");
+    System.out.println(data.getRandomFortune());
+    System.out.println("second fortune:");
+    System.out.println(data.getRandomFortune());
+    //get random monsters
+    System.out.println("TESTING get random monsters: ");
+    System.out.println(data.getRandomMonsters());
+    data.getKnight("danu").addXP(3);
+    System.out.println(data.getKnights());
+    data.save("knights.csv");
   }
 }
