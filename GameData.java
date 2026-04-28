@@ -10,10 +10,6 @@ public abstract class GameData{
   protected final List<MOB> monsters = new ArrayList<>();
   private static final Random random = new Random();
 
-  public GameData(){
-
-  }
-
   public List<Knight> getKnights(){
     return knights;
   }
@@ -63,21 +59,16 @@ public abstract class GameData{
     return fortunes.get(randomIndex);
   }
 
-  //not sure if doing this method correctly
   public List<MOB> getRandomMonsters(){
-    List<MOB> monsterList = new ArrayList<>();
-    int listSize = monsters.size();
-    for(int i = 0; i < activeKnights.size(); ++i){
-      int randomIndex = random.nextInt(listSize);
-      monsterList.add(monsters.get(randomIndex));
-    }
-    return monsterList;
+    int listSize = activeKnights.size();
+    int randomNum = random.nextInt(listSize) + 1; //+1 so it cant be 0
+    return getRandomMonsters(randomNum);
   }
 
-  //not sure if doing this method correctly
+
   public List<MOB> getRandomMonsters(int number){
     //monsters should be copied into the return List, so they can be modified individually
-    int listSize = monsters.size(); //number of monsters cannot be greater than active knights
+    int listSize = monsters.size(); 
     List<MOB> monsterList = new ArrayList<>();
 
     for(int i = 0; i < number; ++i){
