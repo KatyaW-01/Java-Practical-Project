@@ -112,8 +112,8 @@ public class CSVGameData extends GameData {
     System.out.println(data.getActiveKnights());
     //setting and removing active knights
     Knight knight = data.getKnight("Gwain");
-    Knight morrigan = new Knight(04,"Morrigan Ravenskind",30,15,1,DiceType.D8,0);
-    System.out.println("TESTING set active knight (returns true if successful): " + data.setActive(knight) + data.setActive(morrigan));
+    Knight morrigan = data.getKnight("Morrigan");
+    System.out.println("TESTING set active knight (returns true if successful): " + data.setActive(knight) + " " + data.setActive(morrigan));
     System.out.println("TESTING get active knights (Should now include Gwain + Morrigan): ");
     System.out.println(data.getActiveKnights());
     System.out.println("TESTING remove active knight: ");
@@ -139,8 +139,7 @@ public class CSVGameData extends GameData {
     //get random monsters
     System.out.println("TESTING get random monsters: ");
     System.out.println(data.getRandomMonsters());
-    data.getKnight("danu").addXP(3);
-    System.out.println(data.getKnights());
-    data.save("knights.csv");
+    // data.getKnight("danu").addXP(3);
+    // data.save("knights.csv");
   }
 }
